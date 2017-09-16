@@ -4,7 +4,7 @@ Editor: Shawn Ng<br>
 Content Author: **Vincent Vankrunkelsven**<br>
 Site: https://www.datacamp.com/courses/introduction-to-machine-learning-with-r<br>
 
-1. [What is machine learning](What is machine learning)
+1. [What is machine learning](#1-what-is-machine-learning)
 	* Algorithms that learn from data
 	* Building models for prediction
 	* ML problems
