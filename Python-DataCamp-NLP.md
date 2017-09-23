@@ -188,19 +188,19 @@ bow_doc = sorted(text, key=lambda w: w[1], reverse=True)
 
 # Print the top 5 words of the document alongside the count
 for word_id, word_count in bow_doc[:5]:
-    print(dictionary.get(word_id), word_count)
-    
+  print(dictionary.get(word_id), word_count)
+  
 # Create the defaultdict: total_word_count
 total_word_count = defaultdict(int)
 for word_id, word_count in itertools.chain.from_iterable(corpus):
-    total_word_count[word_id] += word_count
+  total_word_count[word_id] += word_count
 
 # Create a sorted list from the defaultdict: sorted_word_count
 sorted_word_count = sorted(total_word_count.items(), key=lambda w: w[1], reverse=True) 
 
 # Print the top 5 words across all documents alongside the count
 for word_id, word_count in sorted_word_count[:5]:
-    print(word_id, word_count)
+  print(word_id, word_count)
 ```
 
 ### Tf-idf
@@ -222,5 +222,98 @@ sorted_tfidf_weights = sorted(tfidf_weights, key=lambda w: w[1], reverse=True)
 
 # Print the top 5 weighted words
 for term_id, weight in sorted_tfidf_weights[:5]:
-    print(dictionary.get(term_id), weight)
+  print(dictionary.get(term_id), weight)
+```
+
+## 3. Named-entity recognition
+### NLTK
+```python
+# Tokenize the article into sentences: sentences
+sentences = nltk.sent_tokenize(article)
+
+# Tokenize each sentence into words: token_sentences
+token_sentences = [nltk.word_tokenize(sent) for sent in sentences]
+
+# Tag each tokenized sentence into parts of speech: pos_sentences
+pos_sentences = [nltk.pos_tag(sent) for sent in token_sentences] 
+
+# Create the named entity chunks: chunked_sentences
+chunked_sentences = nltk.ne_chunk_sents(pos_sentences, binary=True)
+
+# Test for stems of the tree with 'NE' tags
+for sent in chunked_sentences:
+  for chunk in sent:
+    if hasattr(chunk, "label") and chunk.label() == "NE":
+      print(chunk)
+```
+
+### Pie chart
+```python
+# Create the defaultdict: ner_categories
+ner_categories = defaultdict(int)
+
+# Create the nested for loop
+for sent in chunked_sentences:
+  for chunk in sent:
+    if hasattr(chunk, 'label'):
+      ner_categories[chunk.label()] += 1
+            
+# Create a list from the dictionary keys for the chart labels: labels
+labels = list(ner_categories.keys())
+
+# Create a list of the values: values
+values = [ner_categories.get(l) for l in labels]
+
+# Create the pie chart
+plt.pie(values, labels=labels, autopct='%1.1f%%', startangle=140)
+
+# Display the chart
+plt.show()
+```
+
+### spaCy
+```python
+# Import spacy
+import spacy
+
+# Instantiate the English model: nlp
+nlp = spacy.load('en', tagger=False, parser=False, matcher=False)
+
+# Create a new document: doc
+doc = nlp(article)
+
+# Print all of the found entities and their labels
+for ent in doc.ents:
+  print(ent.label_, ent.text)
+```
+
+### Polyglot, French NER
+```python
+# Create a new text object using Polyglot's Text class: txt
+txt = Text(article)
+
+# Print each of the entities found
+for ent in txt.entities:
+  print(ent)
+
+# first element is the entity tag, and the second element is the full string of the entity text
+# Create the list of tuples: entities
+entities = [(ent.tag, ' '.join(ent)) for ent in txt.entities]
+```
+
+### NER via ensemble model
+```python
+# Create a set of spaCy entities keeping only their text: spacy_ents
+spacy_ents = {e.text for e in doc.ents} 
+
+# Create a set of the intersection between the spacy and polyglot entities: ensemble_ents
+# polyglot entities: poly_ents
+ensemble_ents = spacy_ents.intersection(poly_ents)
+
+# Print the common entities
+print(ensemble_ents)
+
+# Calculate the number of entities not included in the new ensemble set of entities: num_left_out
+num_left_out = len(spacy_ents.union(poly_ents)) - len(ensemble_ents)
+print(num_left_out)
 ```
