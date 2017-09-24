@@ -116,15 +116,16 @@ Uses clustering classes of labeled obs to assign class to unlabeled obs -> more 
 
 
 ## 2. Performance measures
+### The Confusion Matrix
 ```r
 # A decision tree classification model is built on the data
-tree <- rpart(Pred1 ~ ., data = data, method = "class")
+tree <- rpart(response ~ ., data = data, method = "class")
 
 # Use the predict() method to make predictions, assign to pred
 pred <- predict(tree, data, type="class")
 
 # Use the table() method to make the confusion matrix
-conf <- table(data$Pred1, pred)
+conf <- table(data$response, pred)
 
 # Assign TP, FN, FP and TN using conf
 TP <- conf[1, 1]
@@ -140,4 +141,75 @@ prec <- TP / (TP+FP)
 
 # recall: rec
 rec <- TP / (TP+FN)
+```
+
+### The quality of a regression
+```r
+str(air)
+
+# Inspect your colleague's code to build the model
+fit <- lm(dec ~ freq + angle + ch_length, data = air)
+
+# Use the model to predict for all values: pred
+pred <- predict(fit)
+
+# Use air$dec and pred to calculate the RMSE 
+rmse <- sqrt((1/nrow(air)) * sum((air$dec - pred)^2))
+
+# Print out rmse
+print(rmse)
+
+
+# Previous model
+fit <- lm(dec ~ freq + angle + ch_length, data = air)
+pred <- predict(fit)
+rmse <- sqrt(sum( (air$dec - pred) ^ 2) / nrow(air))
+rmse
+
+# Your colleague's more complex model
+fit2 <- lm(dec ~ freq + angle + ch_length + velocity + thickness, data = air)
+
+# Use the model to predict for all values: pred2
+pred2 <- predict(fit2)
+
+# Calculate rmse2
+rmse2 <- sqrt(sum( (air$dec - pred2) ^ 2) / nrow(air))
+
+# Print out rmse2
+rmse2
+```
+
+### Clustering
+The within sum of squares is far lower than the between sum of squares. Indicating the clusters are well seperated and overall compact
+```r
+set.seed(1)
+str(seeds)
+
+# Group the seeds in three clusters
+km_seeds <- kmeans(seeds, 3)
+
+# Color the points in the plot based on the clusters
+plot(length ~ compactness, data = seeds, col=km_seeds$cluster)
+
+# Print out the ratio of the WSS to the BSS
+# WSS: within sum of squares
+# BSS: between cluster sum of squares
+km_seeds$tot.withinss / km_seeds$betweenss
+```
+
+### Split the sets into training and test data
+```r
+set.seed(1)
+
+# Shuffle the dataset, call the result shuffled
+n <- nrow(titanic)
+shuffled <- titanic[sample(n),]
+
+# Split the data in train and test
+train <- shuffled[1:round(0.7*n),]
+test <- shuffled[(round(0.7 * n) + 1):n,]
+
+# Print the structure of train and test
+str(train)
+str(test)
 ```
