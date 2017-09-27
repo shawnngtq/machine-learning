@@ -15,13 +15,13 @@ Site: https://www.datacamp.com/courses/introduction-to-machine-learning-with-r<b
 		1. [Supervised learning](#supervised-learning)
 		2. [Unsupervised learning](#unsupervised-learning)
 		3. [Semi-supervised learning](#semi-supervised-learning)
-2. Performance measures
+2. [Performance measures](#2-performance-measures)
 	1. Ratio in confusion matrix
 		1. Accuracy: `(TP+TN) / (TP+FP+FN+TN)`
 		2. Precision: `TP / (TP+FP)`
 		3. Recall: `TP / (TP+FN)`
-3. Classification
-4. Regression
+3. [Classification](#3-classification)
+4. [Regression](#4-regression)
 5. Clustering
 
 
@@ -423,4 +423,231 @@ perf_k <- performance(pred_k, "tpr", "fpr")
 
 # Draw the ROC lines using draw_roc_lines()
 draw_roc_lines(tree = perf_t, knn = perf_k)
+```
+
+
+
+
+
+## 4. Regression
+```r
+## Simple linear regression
+# Plot nose length as function of nose width.
+plot(kang_nose, xlab = "nose width", ylab = "nose length")
+
+# Describe the linear relationship between the two variables: lm_kang
+lm_kang <- lm(nose_length ~ nose_width, data = kang_nose)
+
+# Print the coefficients of lm_kang
+print(lm_kang$coef)
+
+# Predict and print the nose length of the escaped kangoroo
+print(predict(lm_kang, nose_width_new))
+
+
+## Performance measure
+abline(lm_kang$coefficients, col = "red")
+
+# Apply predict() to lm_kang: nose_length_est
+nose_length_est <- predict(lm_kang)
+
+# Calculate difference between the predicted and the true values: res
+res <- kang_nose$nose_length - nose_length_est
+
+# Calculate RMSE, assign it to rmse and print it
+rmse <- sqrt(sum(res^2)/nrow(kang_nose))
+print(rmse)
+
+
+# Calculate the residual sum of squares: ss_res
+ss_res <- sum(res^2)
+
+# Determine the total sum of squares: ss_tot
+ss_tot <- sum((kang_nose$nose_length - mean(kang_nose$nose_length))^2)
+
+# Calculate R-squared and assign it to r_sq. Also print it.
+r_sq <- 1 - (ss_res / ss_tot)
+print(r_sq)
+
+# Apply summary() to lm_kang
+# summary multiple R-squared is the same as r_sq
+summary(lm_kang)
+```
+
+```r
+plot(world_bank_train)
+
+# Set up a linear model between the two variables: lm_wb
+lm_wb <- lm(urb_pop ~ cgdp, data=world_bank_train)
+
+# Add a red regression line to your scatter plot
+abline(lm_wb$coef, col="red")
+
+# Summarize lm_wb and select R-squared
+summary(lm_wb)$r.squared
+
+# Predict the urban population of afghanistan based on cgdp_afg
+predict(lm_wb, cgdp_afg)
+
+
+## Improve model
+# Plot: change the formula and xlab
+plot(urb_pop ~ log(cgdp), data = world_bank_train,
+     xlab = "log(GDP per Capita)",
+     ylab = "Percentage of urban population")
+
+# Linear model: change the formula
+lm_wb <- lm(urb_pop ~ log(cgdp), data = world_bank_train)
+
+# Add a red regression line to your scatter plot
+abline(lm_wb$coefficients, col = "red")
+
+# Summarize lm_wb and select R-squared
+summary(lm_wb)$r.squared
+
+# Predict the urban population of afghanistan based on cgdp_afg
+predict(lm_wb, cgdp_afg)
+```
+
+### Multivariable Linear Regression
+```r
+plot(sales ~ sq_ft, shop_data)
+plot(sales ~ size_dist, shop_data)
+plot(sales ~ inv, shop_data)
+
+# Build a linear model for net sales based on all other variables: lm_shop
+lm_shop <- lm(sales ~ ., shop_data)
+
+# Summarize lm_shop
+summary(lm_shop)
+
+
+## Are all predictors relevant?
+# Plot the residuals in function of your fitted observations
+plot(lm_shop$fitted.values, lm_shop$residuals, ylab="Residual Quantiles")
+
+# Make a Q-Q plot of your residual quantiles
+qqnorm(lm_shop$residuals, ylab="Residual Quantiles")
+
+# Summarize your model
+# small p-values -> every predictor is importan
+summary(lm_shop)
+
+# Predict the net sales based on shop_new.
+predict(lm_shop, shop_new)
+```
+
+```r
+# Add a plot:  energy/100g as function of total size. Linearity plausible?
+plot(energy ~ protein, choco_data)
+plot(energy ~ fat, choco_data)
+plot(energy ~ size, choco_data)
+
+# Build a linear model for the energy based on all other variables: lm_choco
+lm_choco <- lm(energy ~ ., data=choco_data)
+
+# Plot the residuals in function of your fitted observations
+plot(lm_choco$fitted.values, lm_choco$residuals)
+
+# Make a Q-Q plot of your residual quantiles
+qqnorm(lm_choco$residuals)
+
+# Summarize lm_choco
+# low Pr(>|t|) < 0.05 -> statistically significant
+summary(lm_choco)
+```
+
+### Generalization in Regression
+```r
+## log-linear model
+lm_wb_log <- lm(urb_pop ~ log(cgdp), data = world_bank_train)
+
+# Calculate rmse_train
+rmse_train <- sqrt(mean(lm_wb_log$residuals ^ 2))
+
+# The real percentage of urban population in the test set, the ground truth
+world_bank_test_truth <- world_bank_test$urb_pop
+
+# The predictions of the percentage of urban population in the test set
+world_bank_test_input <- data.frame(cgdp = world_bank_test$cgdp)
+world_bank_test_output <- predict(lm_wb_log, world_bank_test_input)
+
+# The residuals: the difference between the ground truth and the predictions
+res_test <- world_bank_test_output - world_bank_test_truth
+
+
+# Use res_test to calculate rmse_test
+rmse_test <- sqrt(sum(res_test^2)/length(res_test))
+
+# Print the ratio of the test RMSE over the training RMSE
+# The test's RMSE is only slightly larger than the training RMSE. This means that your model generalizes well to unseen observations
+print(rmse_test/rmse_train)
+
+
+## non-parametric k-NN algorithm
+# x_pred: predictor values of the new observations (this will be the cgdp column of world_bank_test)
+# x: predictor values of the training set (the cgdp column of world_bank_train)
+# y: corresponding response values of the training set (the urb_pop column of world_bank_train)
+# k: the number of neighbors (this will be 30)
+
+my_knn <- function(x_pred, x, y, k){
+  m <- length(x_pred)
+  predict_knn <- rep(0, m)
+  for (i in 1:m) {
+
+    # Calculate the absolute distance between x_pred[i] and x
+    dist <- abs(x_pred[i] - x)
+
+    # Apply order() to dist, sort_index will contain
+    # the indices of elements in the dist vector, in
+    # ascending order. This means sort_index[1:k] will
+    # return the indices of the k-nearest neighbors.
+    sort_index <- order(dist)
+
+    # Apply mean() to the responses of the k-nearest neighbors
+    predict_knn[i] <- mean(y[sort_index[1:k]])
+
+  }
+  return(predict_knn)
+}
+
+# Apply your algorithm on the test set: test_output
+test_output <- my_knn(world_bank_test$cgdp, world_bank_train$cgdp, world_bank_train$urb_pop, 30)
+
+# Have a look at the plot of the output
+plot(world_bank_train,
+     xlab = "GDP per Capita",
+     ylab = "Percentage Urban Population")
+points(world_bank_test$cgdp, test_output, col = "green")
+
+
+## Parametric vs non-parametric
+# Define ranks to order the predictor variables in the test set
+ranks <- order(world_bank_test$cgdp)
+
+# Scatter plot of test set
+plot(world_bank_test,
+     xlab = "GDP per Capita", ylab = "Percentage Urban Population")
+
+# Predict with simple linear model and add line
+test_output_lm <- predict(lm_wb, data.frame(cgdp = world_bank_test$cgdp))
+lines(world_bank_test$cgdp[ranks], test_output_lm[ranks], lwd = 2, col = "blue")
+
+# Predict with log-linear model and add line
+test_output_lm_log <- predict(lm_wb_log, data.frame(cgdp = world_bank_test$cgdp))
+lines(world_bank_test$cgdp[ranks], test_output_lm_log[ranks], lwd = 2, col = "red")
+
+# Predict with k-NN and add line
+test_output_knn <- my_knn(world_bank_test$cgdp, world_bank_train$cgdp, world_bank_train$urb_pop, 30)
+lines(world_bank_test$cgdp[ranks], test_output_knn[ranks], lwd = 2, col = "green")
+
+# Calculate RMSE for simple linear model
+sqrt(mean( (test_output_lm - world_bank_test$urb_pop) ^ 2))
+
+# Calculate RMSE for log-linear model
+# log-linear model has the lowest RMSE -> most suitable model
+sqrt(mean( (test_output_lm_log - world_bank_test$urb_pop) ^ 2))
+
+# Calculate RMSE for k-NN technique
+sqrt(mean( (test_output_knn - world_bank_test$urb_pop) ^ 2))
 ```
