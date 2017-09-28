@@ -1,8 +1,8 @@
 # Supervised Learning with scikit-learn
 
 Editor: Shawn Ng<br>
-Content Author: **Katharine Jarmul**<br>
-Site: https://www.datacamp.com/courses/natural-language-processing-fundamentals-in-python<br>
+Content Author: **Andreas Müller**<br>
+[Site](https://www.datacamp.com/courses/supervised-learning-with-scikit-learn)<br>
 
 1. [Classification](l#1-classification)
 	- Numerical exploratory data analysis (EDA)

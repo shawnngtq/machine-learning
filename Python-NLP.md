@@ -2,12 +2,33 @@
 
 Editor: Shawn Ng<br>
 Content Author: **Katharine Jarmul**<br>
-Site: https://www.datacamp.com/courses/natural-language-processing-fundamentals-in-python<br>
+[Site](https://www.datacamp.com/courses/natural-language-processing-fundamentals-in-python)<br>
 
 1. [Regular expressions & word tokenization](#1-regular-expressions-word-tokenization)
+    - re.split() and re.findall()
+    - Word tokenization with NLTK
+    - re.search() and re.match()
+    - Regex with NLTK tokenization
+    - Non-ascii tokenization
+    - Histogram of text length
 2. [Simple topic identification](#2-simple-topic-identification)
+    - Building a Counter with bag-of-words
+    - Text preprocessing
+    - Creating and querying a corpus with gensim
+    - Gensim bag-of-words
+    - Tf-idf
 3. [Named-entity recognition](#3-named-entity-recognition)
+    - NLTK
+    - Pie chart
+    - spaCy
+    - Polyglot, French NER
+    - NER via ensemble model
 4. [Building a "fake news" classifier](#4-building-a-fake-news-classifier)
+    - CountVectorizer for text classification
+    - TfidfVectorizer for text classification
+    - Inspecting the vectors
+    - Training and testing the "fake news" model with CountVectorizer
+    - Improving your model
 
 
 

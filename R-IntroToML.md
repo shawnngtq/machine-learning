@@ -2,27 +2,39 @@
 
 Editor: Shawn Ng<br>
 Content Author: **Vincent Vankrunkelsven**<br>
-Site: https://www.datacamp.com/courses/introduction-to-machine-learning-with-r<br>
+[Site](https://www.datacamp.com/courses/introduction-to-machine-learning-with-r)<br>
 
 1. [What is machine learning](#1-what-is-machine-learning)
-	* Algorithms that learn from data
-	* Building models for prediction
-	* ML problems
-		1. [Classification](#classification)
-		2. [Regression](#regression)
-		3. [Clustering](#clustering)
-	* ML tasks
-		1. [Supervised learning](#supervised-learning)
-		2. [Unsupervised learning](#unsupervised-learning)
-		3. [Semi-supervised learning](#semi-supervised-learning)
+    - ML problems
+        1. [Classification](#classification)
+        2. [Regression](#regression)
+        3. [Clustering](#clustering)
+    - ML tasks
+        1. [Supervised learning](#supervised-learning)
+        2. [Unsupervised learning](#unsupervised-learning)
+        3. [Semi-supervised learning](#semi-supervised-learning)
 2. [Performance measures](#2-performance-measures)
-	1. Ratio in confusion matrix
-		1. Accuracy: `(TP+TN) / (TP+FP+FN+TN)`
-		2. Precision: `TP / (TP+FP)`
-		3. Recall: `TP / (TP+FN)`
+    - The Confusion Matrix
+        1. Accuracy: `(TP+TN) / (TP+FP+FN+TN)`
+        2. Precision: `TP / (TP+FP)`
+        3. Recall: `TP / (TP+FN)`
+    - The quality of a regression
+    - Clustering
+    - Split the sets into training and test data
+    - Using Cross Validation
 3. [Classification](#3-classification)
+    - Learn a decision tree
+    - k-Nearest Neighbors (k-NN)
+    - ROC curve
 4. [Regression](#4-regression)
-5. Clustering
+    - Multivariable Linear Regression
+    - Generalization in Regression
+5. [Clustering](#5-clustering)
+    - kmeans
+    - scree plot
+    - Standardized vs non-standardized clustering
+    - Hierarchical Clustering
+    - Hierarchical vs k-means
 
 
 
@@ -58,7 +70,6 @@ RMSE: Root Mean Squared Error
 
 Mean distance bet. estimates and regression line
 
-
 ### Clustering
 Grouping objects in clusters
 
@@ -73,7 +84,6 @@ plot(response~predictor, data=data, col=kmeans_data$cluster)
 Similarity within each cluster: Within sum of squares (WSS)
 
 Similarity bet. clusters: Between cluster sum of squares (BSS)
-
 
 ### Supervised learning
 Function used to assign a class/value to unseen obs.
@@ -91,7 +101,6 @@ test <- data.frame(pred1=c(x,x), ..., predX=c(x,x))
 predict(decisionTree, test, type='class')
 ```
 
-
 ### Unsupervised learning
 Clustering: find groups observation that are similar
 
@@ -104,7 +113,6 @@ kmData <- kmeans(data, NUMBER OF CLUSTERS)
 plot(data, col=kmData$cluster)
 points(kmData$centers, pch = 22, bg = c(1, 2), cex = 2)
 ```
-
 
 ### Semi-supervised learning
 Many unlabeled obs, few labeled obs
