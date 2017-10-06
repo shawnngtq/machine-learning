@@ -12,9 +12,9 @@ Content Author: **Benjamin Wilson**<br>
 		- `StandardScaler()` standardizes features by removing the mean and scaling to unit variance
 		- `Normalizer()` rescales each sample
 2. [Visualization with hierarchical clustering and t-SNE](#2-visualization-with-hierarchical-clustering-and-t-sne)
-	- Hierarchical clustering with SciPy
-	- Cluster labels in hierarchical clustering
-	- t-SNE for 2-dimensional maps
+	- [Hierarchical clustering with SciPy](#hierarchical-clustering-with-scipy)
+	- [Cluster labels in hierarchical clustering](#cluster-labels-in-hierarchical-clustering)
+	- [t-SNE for 2-dimensional maps](#t-sne-for-2-dimensional-maps)
 3. [Decorrelating your data and dimension reduction](#3-decorrelating-your-data-and-dimension-reduction)
 4. [Discovering interpretable features](#4-discovering-interpretable-features)
 
@@ -284,5 +284,61 @@ for x, y, company in zip(xs, ys, companies):
 plt.show()
 ```
 
+
+
+
+
 ## 3. Decorrelating your data and dimension reduction
+### Visualizing the PCA transformation
+```python
+# Perform the necessary imports
+import matplotlib.pyplot as plt
+from scipy.stats import pearsonr
+
+# Assign the 0th column of grains: width
+width = grains[:,0]
+
+# Assign the 1st column of grains: length
+length = grains[:,1]
+
+# Scatter plot width vs length
+plt.scatter(width, length)
+plt.axis('equal')
+plt.show()
+
+# Calculate the Pearson correlation
+correlation, pvalue = pearsonr(width, length)
+
+# Display the correlation
+print(correlation)
+
+
+# Import PCA
+from sklearn.decomposition import PCA
+
+# Create PCA instance: model
+model = PCA()
+
+# Apply the fit_transform method of model to grains: pca_features
+pca_features = model.fit_transform(grains)
+
+# Assign 0th column of pca_features: xs
+xs = pca_features[:,0]
+
+# Assign 1st column of pca_features: ys
+ys = pca_features[:,1]
+
+# Scatter plot xs vs ys
+plt.scatter(xs, ys)
+plt.axis('equal')
+plt.show()
+
+# Calculate the Pearson correlation of xs and ys
+correlation, pvalue = pearsonr(xs, ys)
+
+# Display the correlation
+print(correlation)
+```
+
+
 ## 4. Discovering interpretable features
