@@ -4,11 +4,11 @@ Editor: Shawn Ng<br>
 Content Author: **Benjamin Wilson**<br>
 [Site](https://www.datacamp.com/courses/unsupervised-learning-in-python)<br>
 
-1. [Clustering for dataset exploration]()
-	- Clustering 2D points
-	- Evaluating a clustering
-	- Transforming features for better clusterings
-	- Normalize
+1. [Clustering for dataset exploration](#1-clustering-for-dataset-exploration)
+	- [kMeans Clustering](#kmeans-clustering)
+	- [Evaluating a clustering](#evaluating-a-clustering)
+	- [Transforming features for better clusterings](#transforming-features-for-better-clusterings)
+	- [Normalize](#normalize)
 		- `StandardScaler()` standardizes features by removing the mean and scaling to unit variance
 		- `Normalizer()` rescales each sample
 2. [Visualization with hierarchical clustering and t-SNE]()
@@ -20,7 +20,7 @@ Content Author: **Benjamin Wilson**<br>
 
 
 ## 1. Clustering for dataset exploration
-### Clustering 2D points
+### kMeans Clustering
 ```python
 # Import KMeans
 from sklearn.cluster import KMeans
@@ -166,6 +166,28 @@ df = pd.DataFrame({'labels': labels, 'companies': companies})
 print(df.sort_values('labels'))
 ```
 
+
+
+
+
 ## 2. Visualization with hierarchical clustering and t-SNE
+### Hierarchical clustering with SciPy
+```python
+# Perform the necessary imports
+from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
+
+# Calculate the linkage: mergings
+mergings = linkage(samples, method='complete')
+
+# Plot the dendrogram, using varieties as labels
+dendrogram(mergings,
+           labels=varieties,
+           leaf_rotation=90,
+           leaf_font_size=6,
+)
+plt.show()
+```
+
 ## 3. Decorrelating your data and dimension reduction
 ## 4. Discovering interpretable features
