@@ -16,9 +16,9 @@ Content Author: **Benjamin Wilson**<br>
 	- [Cluster labels in hierarchical clustering](#cluster-labels-in-hierarchical-clustering)
 	- [t-SNE for 2-dimensional maps](#t-sne-for-2-dimensional-maps)
 3. [Decorrelating your data and dimension reduction](#3-decorrelating-your-data-and-dimension-reduction)
-	- Visualizing the PCA transformation
-	- Intrinsic dimension
-	- Dimension reduction with PCA
+	- [Visualizing the PCA transformation](#visualizing-the-pca-transformation)
+	- [Intrinsic dimension](#intrinsic-dimension)
+	- [Dimension reduction with PCA](#dimension-reduction-with-pca)
 4. [Discovering interpretable features](#4-discovering-interpretable-features)
 
 
@@ -467,4 +467,38 @@ print(df.sort_values('label'))
 ```
 
 
+
+
+
 ## 4. Discovering interpretable features
+### Non-negative matrix factorization (NMF)
+```python
+# Import NMF
+from sklearn.decomposition import NMF
+
+# Create an NMF instance: model
+model = NMF(n_components=6)
+
+# Fit the model to articles
+model.fit(articles)
+
+# Transform the articles: nmf_features
+nmf_features = model.transform(articles)
+
+# Print the NMF features
+print(nmf_features)
+
+
+# Import pandas
+import pandas as pd
+
+# Create a pandas DataFrame: df
+df = pd.DataFrame(nmf_features, index=titles)
+
+# Print the row for 'Anne Hathaway'
+print(df.loc['Anne Hathaway'])
+
+# Print the row for 'Denzel Washington'
+print(df.loc['Denzel Washington'])
+```
+
