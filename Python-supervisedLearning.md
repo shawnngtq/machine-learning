@@ -4,7 +4,7 @@ Editor: Shawn Ng<br>
 Content Author: **Andreas Müller**<br>
 [Site](https://www.datacamp.com/courses/supervised-learning-with-scikit-learn)<br>
 
-1. [Classification](l#1-classification)
+1. [Classification](#1-classification)
 	- Numerical exploratory data analysis (EDA)
 	- Visual EDA
 	- k-Nearest Neighbors
