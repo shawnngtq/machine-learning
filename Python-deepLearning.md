@@ -4,15 +4,15 @@ Editor: Shawn Ng<br>
 Content Author: **Dan Becker**<br>
 [Site](https://www.datacamp.com/courses/deep-learning-in-python)<br>
 
-1. [Basics of deep learning and neural networks]()
+1. [Basics of deep learning and neural networks](#1-basics-of-deep-learning-and-neural-networks)
 	- Neural networks account for interactions really well
 	- The model training process sets them to optimize predictive accuracy
 	- The last layers capture the most complex interactions
-	- [Forward propagation]()
-	- [Multi-layer neural networks]()
-2. [Optimizing a neural network with backward propagation]()
-3. [Building deep learning models with keras]()
-4. [Fine-tuning keras models]()
+	- [Forward propagation](#forward-propagation)
+	- [Multi-layer neural networks](#multi-layer-neural-networks)
+2. [Optimizing a neural network with backward propagation](#2-optimizing-a-neural-network-with-backward-propagation)
+3. [Building deep learning models with keras](#3-building-deep-learning-models-with-keras)
+4. [Fine-tuning keras models](#4-fine-tuning-keras-models)
 
 
 
