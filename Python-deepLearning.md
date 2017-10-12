@@ -20,9 +20,9 @@ Content Author: **Dan Becker**<br>
 	- [Creating a keras model](#creating-a-keras-model)
 	- [Classification model](#classification-model)
 4. [Fine-tuning keras models](#4-fine-tuning-keras-models)
-	- [Understanding model optimization]()
-	- [Model validation]()
-	- [Digit recognition model]()
+	- [Understanding model optimization](#understanding-model-optimization)
+	- [Model validation](#model-validation)
+	- [Digit recognition model](#digit-recognition-model)
 
 
 
