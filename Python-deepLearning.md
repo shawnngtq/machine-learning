@@ -17,8 +17,8 @@ Content Author: **Dan Becker**<br>
 	- [Making multiple updates to weights](#making-multiple-updates-to-weights)
 		- The mean squared error decreases as the number of iterations go up
 3. [Building deep learning models with keras](#3-building-deep-learning-models-with-keras)
-	- [Creating a keras model]()
-	- [Classification model]()
+	- [Creating a keras model](#creating-a-keras-model)
+	- [Classification model](#classification-model)
 4. [Fine-tuning keras models](#4-fine-tuning-keras-models)
 
 
