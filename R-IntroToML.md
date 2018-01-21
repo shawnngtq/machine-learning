@@ -24,14 +24,14 @@ Content Author: **Vincent Vankrunkelsven**<br>
     - Using Cross Validation
 3. [Classification](#3-classification)
     - Learn a decision tree
-    - k-Nearest Neighbors (k-NN)
+    - k-NN (k-Nearest Neighbors)
     - ROC curve
 4. [Regression](#4-regression)
     - Multivariable Linear Regression
     - Generalization in Regression
 5. [Clustering](#5-clustering)
-    - kmeans
-    - scree plot
+    - k-Means
+    - Scree plot
     - Standardized vs non-standardized clustering
     - Hierarchical Clustering
     - Hierarchical vs k-means
