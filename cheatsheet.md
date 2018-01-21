@@ -1,9 +1,9 @@
 # Machine Learning
 
-1. [Classification](#classification): Supervised learning
-2. [Regression](#regression): Supervised learning
-3. [Clustering](#clustering): Unsupervised learning
-
+1. Supervised learning: [Classification](#classification)
+2. Supervised learning: [Regression](#regression)
+3. Unsupervised learning: [Clustering](#clustering)
+4. Bias and Variance
 
 ## Classification
 Predict category of new observation
@@ -20,9 +20,10 @@ Predict category of new observation
 2. Precision: `TP/(TP+FP)`
 3. Recall: `TP/(TP+FN)`
 
-`Accuracy = correctly classified instances / total amount of classified instances`
-
-`Error = 1 - Accuracy`
+```
+Accuracy = correctly classified instances / total amount of classified instances
+Error = 1 - Accuracy
+```
 
 ## Regression
 **Performance measure: Root Mean Squared Error (RMSE)**
@@ -32,3 +33,17 @@ Predict category of new observation
 1. Within sum of squares (WSS)
 2. Between cluster sum of squares (BSS)
 3. Dunn’s index
+
+## Bias and Variance
+```
+Prediction error ~ reducible + irreducible error
+Reducible error = Bias & Variance
+```
+```
+Error due to bias = Wrong assumption = diff(prediction, truth) = complexity of model
+More model restrictions = high bias = low variance = underfitting
+```
+```
+Error due to variance = error due to the sampling of the training set
+Model fits training set closely = high variance = low bias = overfitting
+```
