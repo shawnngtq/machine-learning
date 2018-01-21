@@ -8,12 +8,13 @@
     1. [Linear models](#linear-model)
     2. [Techniques for non-parametric regression](#techniques-for-non-parametric-regression)
 3. [Clustering](#clustering)
+    1. [k-Means]()
+    2. [Scree plot]()
+    3. [Hierarchical clustering]()
 4. [Bias and Variance](#bias-and-variance)
 
 
-## Classification
-Predict category of new observation
-
+## Classification: Predict category of new observation
 ### Performance measure: confusion matrix
 
 |||Prediction|Prediction|
@@ -66,13 +67,31 @@ FPR = FP / (FP+TN)
 3. Regression Trees
 
 
-## Clustering
+## Clustering: Grouping objects in clusters
 ### Performance measure:
 1. Within sum of squares (WSS)
 2. Between cluster sum of squares (BSS)
 3. Dunn’s index
 
-## Bias and Variance
+### k-Means
+- Partition data in **k disjoint** subsets
+
+### Scree plot: Choosing k
+- WSS keeps decreasing as k increases -> Find k that minimizes WSS
+
+```
+TSS = WSS + BSS
+WSS / TSS < 0.2
+```
+
+### Hierarchical clustering
+1. Simple-Linkage: minimal distance between clusters = low BSS
+2. Complete-Linkage: maximal distance between clusters = high BSS
+3. Average-Linkage: average distance between clusters
+
+
+
+## Bias and variance
 ```
 Prediction error ~ reducible + irreducible error
 Reducible error = Bias & Variance
