@@ -1,9 +1,9 @@
 # Machine Learning
 
 1. [Classification](#classification)
-    1. [Decision tree]()
-    2. [kNN]()
-    3. [ROC curve]()
+    1. [Decision tree](#decision-tree)
+    2. [kNN](#k-nearest-neighbors-knn)
+    3. [ROC curve](#receiver-operator-characteristic-curve-roc-curve)
 2. [Regression](#regression)
 3. [Clustering](#clustering)
 4. [Bias and Variance](#bias-and-variance)
