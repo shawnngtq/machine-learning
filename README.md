@@ -1,16 +1,16 @@
 # Machine Learning
 
-1. [Classification](#classification)
+1. [Classification](#classification-predict-category-of-new-observation)
     1. [Decision tree](#decision-tree)
     2. [kNN](#k-nearest-neighbors-knn)
     3. [ROC curve](#receiver-operator-characteristic-curve-roc-curve)
 2. [Regression](#regression)
     1. [Linear models](#linear-model)
     2. [Techniques for non-parametric regression](#techniques-for-non-parametric-regression)
-3. [Clustering](#clustering)
-    1. [k-Means]()
-    2. [Scree plot]()
-    3. [Hierarchical clustering]()
+3. [Clustering](#clustering-grouping-objects-in-clusters)
+    1. [k-Means](#k-means)
+    2. [Scree plot](#scree-plot-choosing-k)
+    3. [Hierarchical clustering](#hierarchical-clustering)
 4. [Bias and Variance](#bias-and-variance)
 
 
