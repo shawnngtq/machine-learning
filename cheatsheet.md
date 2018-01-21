@@ -1,9 +1,9 @@
 # Machine Learning
 
-1. Supervised learning: [Classification](#classification)
-2. Supervised learning: [Regression](#regression)
-3. Unsupervised learning: [Clustering](#clustering)
-4. Bias and Variance
+1. [Classification](#classification)
+2. [Regression](#regression)
+3. [Clustering](#clustering)
+4. [Bias and Variance](#bias-and-variance)
 
 ## Classification
 Predict category of new observation
