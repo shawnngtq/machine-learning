@@ -5,6 +5,8 @@
     2. [kNN](#k-nearest-neighbors-knn)
     3. [ROC curve](#receiver-operator-characteristic-curve-roc-curve)
 2. [Regression](#regression)
+    1. [Linear models]()
+    2. [Techniques for non-parametric regression]()
 3. [Clustering](#clustering)
 4. [Bias and Variance](#bias-and-variance)
 
@@ -48,7 +50,21 @@ FPR = FP / (FP+TN)
 
 
 ## Regression
-### Performance measure: Root Mean Squared Error (RMSE)
+### Performance measure: 
+1. Root Mean Squared Error (RMSE)
+2. R-squared
+3. Adjusted R-squared: penalizes more predictors
+4. p-values: low p-values = parameter has significant influence
+
+### Linear model:
+1. Simple linear: 1 predictor (with approximately linear relationship) to model the response
+2. Multi-linear: Higher **predictive power** and **accuracy** = Lower RMSE and higher R-squared
+
+### Techniques for non-parametric regression
+1. KNN
+2. Kernel Regression
+3. Regression Trees
+
 
 ## Clustering
 ### Performance measure:
