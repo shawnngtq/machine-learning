@@ -654,7 +654,7 @@ sqrt(mean( (test_output_knn - world_bank_test$urb_pop) ^ 2))
 
 
 ## 5. Clustering
-### kmeans
+### k-Means
 ```r
 set.seed(100)
 
@@ -691,7 +691,7 @@ print(seeds_km_1$tot.withinss / seeds_km_2$tot.withinss)
 table(seeds_km_1$cluster, seeds_km_2$cluster)
 ```
 
-### scree plot
+### Scree plot
 ```r
 set.seed(100)
 str(school_result)
