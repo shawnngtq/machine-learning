@@ -42,17 +42,15 @@ Content Author: **Vincent Vankrunkelsven**<br>
 
 ## 1. What is machine learning
 ### Classification
-Predict category of new observation
-
-Earlier obs --(estimate)--> classifier
-
-Unseen data --(classifier)--> class
+- Predict category of new observation
+- Earlier obs --(estimate)--> classifier
+- Unseen data --(classifier)--> class
 
 #### Performance measure
+```
 accuracy = correctly classified instances / total classified instances
-
 error = 1 - accuracy
-
+```
 
 ### Regression
 Predictors --(regression function)--> response
@@ -66,9 +64,7 @@ points(VALUE-2:VALUE, predictResult, col=COLOR)
 ```
 
 #### Performance measure
-RMSE: Root Mean Squared Error
-
-Mean distance bet. estimates and regression line
+- RMSE: Root Mean Squared Error. Mean distance bet. estimates and regression line
 
 ### Clustering
 Grouping objects in clusters
@@ -81,18 +77,14 @@ plot(response~predictor, data=data, col=kmeans_data$cluster)
 ```
 
 #### Performance measure
-Similarity within each cluster: Within sum of squares (WSS)
-
-Similarity bet. clusters: Between cluster sum of squares (BSS)
+- Similarity within each cluster: Within sum of squares (WSS)
+- Similarity bet. clusters: Between cluster sum of squares (BSS)
 
 ### Supervised learning
-Function used to assign a class/value to unseen obs.
-
-Given a set of **labeled** obs.
-
-Compare real labels with predicted labels.
-
-Predictions should be similar to real labels.
+- Function used to assign a class/value to unseen obs.
+- Given a set of **labeled** obs.
+- Compare real labels with predicted labels.
+- Predictions should be similar to real labels.
 
 ```r
 library(rpart)
@@ -102,22 +94,19 @@ predict(decisionTree, test, type='class')
 ```
 
 ### Unsupervised learning
-Clustering: find groups observation that are similar
-
-Does not require **labeled** observations
-
-No real labels to compare
+- Clustering: find groups observation that are similar
+- Does not require **labeled** observations
+- No real labels to compare
 
 ```r
-kmData <- kmeans(data, NUMBER OF CLUSTERS)
+kmData <- kmeans(data, NUMBER_OF_CLUSTERS)
 plot(data, col=kmData$cluster)
 points(kmData$centers, pch = 22, bg = c(1, 2), cex = 2)
 ```
 
 ### Semi-supervised learning
-Many unlabeled obs, few labeled obs
-
-Uses clustering classes of labeled obs to assign class to unlabeled obs -> more obs for supervised learning
+- Many unlabeled obs, few labeled obs
+- Uses clustering classes of labeled obs to assign class to unlabeled obs -> more obs for supervised learning
 
 
 
