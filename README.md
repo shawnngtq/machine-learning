@@ -12,6 +12,10 @@
     2. [Scree plot](#scree-plot-choosing-k)
     3. [Hierarchical clustering](#hierarchical-clustering)
 4. [Bias and Variance](#bias-and-variance)
+5. Model
+    - [Cheatsheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Scikit_Learn_Cheat_Sheet_Python.pdf)
+    - [List of cheatsheets](https://becominghuman.ai/cheat-sheets-for-ai-neural-networks-machine-learning-deep-learning-big-data-678c51b4b463)
+
 
 
 ## Classification: Predict category of new observation
@@ -50,6 +54,7 @@ FPR = FP / (FP+TN)
 ```
 
 
+
 ## Regression
 ### Performance measure: 
 1. Root Mean Squared Error (RMSE)
@@ -60,11 +65,15 @@ FPR = FP / (FP+TN)
 ### Linear model:
 1. Simple linear: 1 predictor (with approximately linear relationship) to model the response
 2. Multi-linear: Higher **predictive power** and **accuracy** = Lower RMSE and higher R-squared
+3. Ridge Regression is a technique for analyzing multiple regression data that suffer from multicollinearity. 
+    - It reduces the standard errors. 
+    - It adds penalty equivalent to square of the magnitude of coefficients
 
 ### Techniques for non-parametric regression
 1. KNN
 2. Kernel Regression
 3. Regression Trees
+
 
 
 ## Clustering: Grouping objects in clusters
@@ -92,15 +101,20 @@ WSS / TSS < 0.2
 
 
 ## Bias and variance
-```
-Prediction error ~ reducible + irreducible error
-Reducible error = Bias & Variance
-```
+- Prediction error $\approx$ reducible + irreducible error
+- Reducible error = Bias & Variance
+
 ```
 Error due to bias = Wrong assumption = diff(prediction, truth) = complexity of model
 More model restrictions = high bias = low variance = underfitting
 ```
+
 ```
 Error due to variance = error due to the sampling of the training set
 Model fits training set closely = high variance = low bias = overfitting
 ```
+
+## Model
+### Cross validation
+- Use to validate the stability of the model
+
