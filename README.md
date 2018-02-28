@@ -2,12 +2,12 @@
 
 1. [Classification](#classification-predict-category-of-new-observation)
     1. [Decision tree](#decision-tree)
-    2. [k-Nearest Neighbors (kNN)]()
-    3. [ROC curve]()
+    2. [k-Nearest Neighbors (kNN)](#knn)
+    3. [ROC curve](#roc-curve)
 2. [Regression](#regression)
     1. [Linear models](#linear-model)
     2. [Techniques for non-parametric regression](#techniques-for-non-parametric-regression)
-3. [Clustering](#clustering-grouping-objects-in-clusters)
+3. [Clustering](#clustering)
     1. [k-Means](#k-means)
     2. [Scree plot](#scree-plot-choosing-k)
     3. [Hierarchical clustering](#hierarchical-clustering)
@@ -76,7 +76,9 @@ FPR = FP / (FP+TN)
 
 
 
-## Clustering: Grouping objects in clusters
+## Clustering
+- Grouping objects in clusters
+
 ### Performance measure:
 1. Within sum of squares (WSS)
 2. Between cluster sum of squares (BSS)
