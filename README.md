@@ -2,8 +2,8 @@
 
 1. [Classification](#classification-predict-category-of-new-observation)
     1. [Decision tree](#decision-tree)
-    2. [kNN](#k-nearest-neighbors-knn)
-    3. [ROC curve](#receiver-operator-characteristic-curve-roc-curve)
+    2. [k-Nearest Neighbors (kNN)]()
+    3. [ROC curve]()
 2. [Regression](#regression)
     1. [Linear models](#linear-model)
     2. [Techniques for non-parametric regression](#techniques-for-non-parametric-regression)
@@ -41,11 +41,11 @@ Goal: end up with pure leafs — leafs that contain observations of one particul
 
 **Pruning** tree restricts node size = higher bias = lower overfit chance.
 
-### k-Nearest Neighbors (kNN)
+### kNN
 Predict using the comparison of **unseen data** and the **training set**
 
-### Receiver Operator Characteristic Curve (ROC Curve)
-Binary classification which uses decision trees and k-NN to predict class, giving probability as output
+### ROC Curve
+Receiver Operator Characteristic Curve: Binary classification which uses decision trees and k-NN to predict class, giving probability as output
 
 ```
 # TPR = True positive rate; FPR = False positive rate
@@ -56,7 +56,7 @@ FPR = FP / (FP+TN)
 
 
 ## Regression
-### Performance measure: 
+### Performance measure:
 1. Root Mean Squared Error (RMSE)
 2. R-squared
 3. Adjusted R-squared: penalizes more predictors
@@ -65,8 +65,8 @@ FPR = FP / (FP+TN)
 ### Linear model:
 1. Simple linear: 1 predictor (with approximately linear relationship) to model the response
 2. Multi-linear: Higher **predictive power** and **accuracy** = Lower RMSE and higher R-squared
-3. Ridge Regression is a technique for analyzing multiple regression data that suffer from multicollinearity. 
-    - It reduces the standard errors. 
+3. Ridge Regression is a technique for analyzing multiple regression data that suffer from multicollinearity.
+    - It reduces the standard errors.
     - It adds penalty equivalent to square of the magnitude of coefficients
 
 ### Techniques for non-parametric regression
@@ -117,4 +117,3 @@ Model fits training set closely = high variance = low bias = overfitting
 ## Model
 ### Cross validation
 - Use to validate the stability of the model
-
