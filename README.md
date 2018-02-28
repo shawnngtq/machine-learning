@@ -103,7 +103,7 @@ WSS / TSS < 0.2
 
 
 ## Bias and variance
-- Prediction error $\approx$ reducible + irreducible error
+- Prediction error = reducible + irreducible error
 - Reducible error = Bias & Variance
 
 ```
