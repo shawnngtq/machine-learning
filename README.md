@@ -20,6 +20,8 @@ Table of content:
 
 
 
+
+
 ## Classification: Predict category of new observation
 ### Performance measure: confusion matrix
 
@@ -57,6 +59,8 @@ FPR = FP / (FP+TN)
 
 
 
+
+
 ## Regression
 ### Performance measure:
 1. Root Mean Squared Error (RMSE)
@@ -75,6 +79,8 @@ FPR = FP / (FP+TN)
 1. KNN
 2. Kernel Regression
 3. Regression Trees
+
+
 
 
 
@@ -104,6 +110,8 @@ WSS / TSS < 0.2
 
 
 
+
+
 ## Bias and variance
 - Prediction error = reducible + irreducible error
 - Reducible error = Bias & Variance
@@ -117,6 +125,10 @@ More model restrictions = high bias = low variance = underfitting
 Error due to variance = error due to the sampling of the training set
 Model fits training set closely = high variance = low bias = overfitting
 ```
+
+
+
+
 
 ## Model
 ### Cross validation
