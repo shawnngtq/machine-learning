@@ -1,5 +1,9 @@
 # Machine Learning
+Reference:
+- [Cheatsheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Scikit_Learn_Cheat_Sheet_Python.pdf)
+- [List of cheatsheets](https://becominghuman.ai/cheat-sheets-for-ai-neural-networks-machine-learning-deep-learning-big-data-678c51b4b463)
 
+Table of content:
 1. [Classification](#classification-predict-category-of-new-observation)
     1. [Decision tree](#decision-tree)
     2. [k-Nearest Neighbors (kNN)](#knn)
@@ -12,9 +16,7 @@
     2. [Scree plot](#scree-plot-choosing-k)
     3. [Hierarchical clustering](#hierarchical-clustering)
 4. [Bias and Variance](#bias-and-variance)
-5. Model
-    - [Cheatsheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Scikit_Learn_Cheat_Sheet_Python.pdf)
-    - [List of cheatsheets](https://becominghuman.ai/cheat-sheets-for-ai-neural-networks-machine-learning-deep-learning-big-data-678c51b4b463)
+5. [Model](#model)
 
 
 
