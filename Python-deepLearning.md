@@ -1,9 +1,5 @@
 # Deep Learning in Python
 
-Editor: Shawn Ng<br>
-Content Author: **Dan Becker**<br>
-[Site](https://www.datacamp.com/courses/deep-learning-in-python)<br>
-
 1. [Basics of deep learning and neural networks](#1-basics-of-deep-learning-and-neural-networks)
 	- Neural networks account for interactions really well
 	- The model training process sets them to optimize predictive accuracy
@@ -54,7 +50,7 @@ def relu(input):
     '''Define your relu activation function here'''
     # Calculate the value for the output of the relu function: output
     output = max(0, input)
-    
+
     # Return the value just calculated
     return(output)
 
@@ -89,11 +85,11 @@ def predict_with_network(input_data_row, weights):
 
     # Put node values into array: hidden_layer_outputs
     hidden_layer_outputs = np.array([node_0_output, node_1_output])
-    
+
     # Calculate model output
     input_to_final_layer = (hidden_layer_outputs * weights['output']).sum()
     model_output = relu(input_to_final_layer)
-    
+
     # Return model output
     return(model_output)
 
@@ -132,10 +128,10 @@ def predict_with_network(input_data):
 
     # Put node values into array: hidden_1_outputs
     hidden_1_outputs = np.array([node_1_0_output, node_1_1_output])
-    
+
     # Calculate output here: model_output
     model_output = (hidden_1_outputs * weights['output']).sum()
-    
+
     # Return model_output
     return(model_output)
 
@@ -189,7 +185,7 @@ print(error_1)
 ```python
 from sklearn.metrics import mean_squared_error
 
-# Create model_output_0 
+# Create model_output_0
 model_output_0 = []
 # Create model_output_0
 model_output_1 = []
@@ -198,7 +194,7 @@ model_output_1 = []
 for row in input_data:
     # Append prediction to model_output_0
     model_output_0.append(predict_with_network(row, weights_0))
-    
+
     # Append prediction to model_output_1
     model_output_1.append(predict_with_network(row, weights_1))
 
@@ -280,13 +276,13 @@ mse_hist = []
 for i in range(n_updates):
     # Calculate the slope: slope
     slope = get_slope(input_data, target, weights)
-    
+
     # Update the weights: weights
     weights = weights - 0.01 * slope
-    
+
     # Calculate mse with new weights: mse
     mse = get_mse(input_data, target, weights)
-    
+
     # Append the mse to mse_hist
     mse_hist.append(mse)
 
@@ -389,16 +385,16 @@ lr_to_test = [0.000001, 0.01, 1]
 # Loop over learning rates
 for lr in lr_to_test:
     print('\n\nTesting model with learning rate: %f\n'%lr )
-    
+
     # Build new model to test, unaffected by previous models
     model = get_new_model()
-    
+
     # Create SGD optimizer with specified learning rate: my_optimizer
     my_optimizer = SGD(lr=lr)
-    
+
     # Compile the model
     model.compile(optimizer=my_optimizer, loss='categorical_crossentropy')
-    
+
     # Fit the model
     model.fit(predictors, target)
 ```

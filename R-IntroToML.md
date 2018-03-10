@@ -1,9 +1,5 @@
 # Introduction to Machine Learning
 
-Editor: Shawn Ng<br>
-Content Author: **Vincent Vankrunkelsven**<br>
-[Site](https://www.datacamp.com/courses/introduction-to-machine-learning-with-r)<br>
-
 1. [What is machine learning](#1-what-is-machine-learning)
     - ML problems
         1. [Classification](#classification)
@@ -150,7 +146,7 @@ fit <- lm(dec ~ freq + angle + ch_length, data = air)
 # Use the model to predict for all values: pred
 pred <- predict(fit)
 
-# Use air$dec and pred to calculate the RMSE 
+# Use air$dec and pred to calculate the RMSE
 rmse <- sqrt((1/nrow(air)) * sum((air$dec - pred)^2))
 
 # Print out rmse
@@ -221,22 +217,22 @@ accs <- rep(0,6)
 for (i in 1:6) {
   # These indices indicate the interval of the test set
   indices <- (((i-1) * round((1/6)*nrow(shuffled))) + 1):((i*round((1/6) * nrow(shuffled))))
-  
+
   # Exclude them from the train set
   train <- shuffled[-indices,]
-  
+
   # Include them in the test set
   test <- shuffled[indices,]
-  
+
   # A model is learned using each training set
   tree <- rpart(Survived ~ ., train, method = "class")
-  
+
   # Make a prediction on the test set using tree
   pred <- predict(tree, test, type="class")
-  
+
   # Assign the confusion matrix to conf
   conf <- table(test$Survived, pred)
-  
+
   # Assign the accuracy of this model to the ith index in accs
   accs[i] <- sum(diag(conf))/sum(conf)
 }
@@ -673,8 +669,8 @@ plot(seeds$width, seeds$length, col=seeds_km$cluster)
 
 ## The influence of starting centroids
 # If you call kmeans() without specifying your centroids, R will randomly assign them for you.
-# To compare the clusters of two cluster models, you can again use table(). 
-# If every row and every column has one value, the resulting clusters completely overlap. 
+# To compare the clusters of two cluster models, you can again use table().
+# If every row and every column has one value, the resulting clusters completely overlap.
 # If this is not the case, some objects are placed in different clusters.
 # For consistent and decent results, you should set nstart > 1 or determine a prior estimation of your centroids
 
@@ -696,18 +692,18 @@ table(seeds_km_1$cluster, seeds_km_2$cluster)
 set.seed(100)
 str(school_result)
 
-# Initialise ratio_ss 
+# Initialise ratio_ss
 ratio_ss <- rep(0, 7)
 
-# Finish the for-loop. 
+# Finish the for-loop.
 for (k in 1:7) {
-  
+
   # Apply k-means to school_result: school_km
   school_km <- kmeans(school_result, k, nstart=20)
-  
+
   # Save the ratio between of WSS to TSS in kth element of ratio_ss
   ratio_ss[k] <- school_km$tot.withinss / school_km$totss
-  
+
 }
 
 # Make a scree plot with type "b" and xlab "k"

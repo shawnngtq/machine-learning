@@ -1,9 +1,5 @@
 # Unsupervised Learning in Python
 
-Editor: Shawn Ng<br>
-Content Author: **Benjamin Wilson**<br>
-[Site](https://www.datacamp.com/courses/unsupervised-learning-in-python)<br>
-
 1. [Clustering for dataset exploration](#1-clustering-for-dataset-exploration)
 	- [kMeans Clustering](#kmeans-clustering)
 	- [Evaluating a clustering](#evaluating-a-clustering)
@@ -77,13 +73,13 @@ inertias = []
 for k in ks:
     # Create a KMeans instance with k clusters: model
     model = KMeans(n_clusters=k)
-    
+
     # Fit model to samples
     model.fit(samples)
-    
+
     # Append the inertia to the list of inertias
     inertias.append(model.inertia_)
-    
+
 # Plot ks vs inertias
 plt.plot(ks, inertias, '-o')
 plt.xlabel('number of clusters, k')
@@ -421,7 +417,7 @@ print(pca_features.shape)
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Create a TfidfVectorizer: tfidf
-tfidf = TfidfVectorizer() 
+tfidf = TfidfVectorizer()
 
 # Apply fit_transform to document: csr_mat
 csr_mat = tfidf.fit_transform(documents)

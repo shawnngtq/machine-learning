@@ -1,9 +1,5 @@
 # Supervised Learning with scikit-learn
 
-Editor: Shawn Ng<br>
-Content Author: **Andreas Müller**<br>
-[Site](https://www.datacamp.com/courses/supervised-learning-with-scikit-learn)<br>
-
 1. [Classification](#1-classification)
 	- Numerical exploratory data analysis (EDA)
 	- Visual EDA
@@ -83,7 +79,7 @@ y_pred = knn.predict(X)
 
 # Predict and print the label for the new data point X_new
 new_prediction = knn.predict(X_new)
-print("Prediction: {}".format(new_prediction)) 
+print("Prediction: {}".format(new_prediction))
 ```
 
 ### The digits recognition dataset
@@ -143,7 +139,7 @@ for i, k in enumerate(neighbors):
 
     # Fit the classifier to the training data
     knn.fit(X_train, y_train)
-    
+
     #Compute accuracy on the training set
     train_accuracy[i] = knn.score(X_train, y_train)
 
@@ -205,7 +201,7 @@ reg.fit(X_fertility, y)
 # Compute predictions over the prediction space: y_pred
 y_pred = reg.predict(prediction_space)
 
-# Print R^2 
+# Print R^2
 print(reg.score(X_fertility, y))
 
 # Plot regression line
@@ -310,13 +306,13 @@ for alpha in alpha_space:
 
     # Specify the alpha value to use: ridge.alpha
     ridge.alpha = alpha
-    
+
     # Perform 10-fold CV: ridge_cv_scores
     ridge_cv_scores = cross_val_score(ridge, X, y, cv=10)
-    
+
     # Append the mean of ridge_cv_scores to ridge_scores
     ridge_scores.append(np.mean(ridge_cv_scores))
-    
+
     # Append the std of ridge_cv_scores to ridge_scores_std
     ridge_scores_std.append(np.std(ridge_cv_scores))
 
@@ -428,7 +424,7 @@ logreg_cv = GridSearchCV(logreg, param_grid, cv=5)
 logreg_cv.fit(X, y)
 
 # Print the tuned parameters and score
-print("Tuned Logistic Regression Parameters: {}".format(logreg_cv.best_params_)) 
+print("Tuned Logistic Regression Parameters: {}".format(logreg_cv.best_params_))
 print("Best score is {}".format(logreg_cv.best_score_))
 ```
 
@@ -583,7 +579,7 @@ print("Shape of DataFrame After Dropping All Rows with Missing Values: {}".forma
 ```
 
 ### Imputing missing data in a ML
-Imputation can be seen as the first step of this machine learning process, the entirety of which can be viewed within the context of a pipeline. Setting up a pipeline with two steps: the imputation step, followed by the instantiation of a classifier. 
+Imputation can be seen as the first step of this machine learning process, the entirety of which can be viewed within the context of a pipeline. Setting up a pipeline with two steps: the imputation step, followed by the instantiation of a classifier.
 ```python
 from sklearn.preprocessing import Imputer
 from sklearn.pipeline import Pipeline
@@ -628,11 +624,11 @@ from sklearn.preprocessing import scale
 X_scaled = scale(X)
 
 # Print the mean and standard deviation of the unscaled features
-print("Mean of Unscaled Features: {}".format(np.mean(X))) 
+print("Mean of Unscaled Features: {}".format(np.mean(X)))
 print("Standard Deviation of Unscaled Features: {}".format(np.std(X)))
 
 # Print the mean and standard deviation of the scaled features
-print("Mean of Scaled Features: {}".format(np.mean(X_scaled))) 
+print("Mean of Scaled Features: {}".format(np.mean(X_scaled)))
 print("Standard Deviation of Scaled Features: {}".format(np.std(X_scaled)))
 ```
 
@@ -644,7 +640,7 @@ from sklearn.pipeline import Pipeline
 # Setup the pipeline steps: steps
 steps = [('scaler', StandardScaler()),
         ('knn', KNeighborsClassifier())]
-        
+
 # Create the pipeline: pipeline
 pipeline = Pipeline(steps)
 
@@ -694,7 +690,7 @@ print("Tuned Model Parameters: {}".format(cv.best_params_))
 steps = [('imputation', Imputer(missing_values='NaN', strategy='mean', axis=0)),
          ('scaler', StandardScaler()),
          ('elasticnet', ElasticNet())]
-         
+
 # Create the pipeline: pipeline
 pipeline = Pipeline(steps)
 
