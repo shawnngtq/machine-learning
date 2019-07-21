@@ -52,13 +52,13 @@ FPR = FP / (FP+TN)
 
 
 == Regression
-=== Performance measure:
+=== Performance measure
 . Root Mean Squared Error (RMSE)
 . R-squared
 . Adjusted R-squared: penalizes more predictors
 . p-values: low p-values = parameter has significant influence
 
-=== Linear model:
+=== Linear model
 . Simple linear: 1 predictor (with approximately linear relationship) to model the response
 . Multi-linear: Higher **predictive power** and **accuracy** = Lower RMSE and higher R-squared
 . Ridge Regression is a technique for analyzing multiple regression data that suffer from multicollinearity.
@@ -77,7 +77,7 @@ FPR = FP / (FP+TN)
 == Clustering
 - Grouping objects in clusters
 
-=== Performance measure:
+=== Performance measure
 . Within sum of squares (WSS)
 . Between cluster sum of squares (BSS)
 . Dunn’s index
@@ -123,3 +123,6 @@ Model fits training set closely = high variance = low bias = overfitting
 == Model
 === Cross validation
 - Use to validate the stability of the model
+
+== References
+- https://becominghuman.ai/cheat-sheets-for-ai-neural-networks-machine-learning-deep-learning-big-data-678c51b4b463
